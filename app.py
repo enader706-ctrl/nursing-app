@@ -1,4 +1,4 @@
-import streamlit as st
+Jnimport streamlit as st
 from google import genai
 
 st.set_page_config(page_title="منصة تمريض كفر الشيخ الذكية", page_icon="🩺", layout="centered")
