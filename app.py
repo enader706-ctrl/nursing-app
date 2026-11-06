@@ -35,3 +35,15 @@ if api_key:
                 
                 st.success("تم التوليد بنجاح! 🎉")
                 st.markdown(response.text)
+import tempfile
+
+uploaded_file = st.file_uploader("اختر ملف المحاضرة (PDF)", type="pdf")
+
+if uploaded_file is not None:
+    # حفظ الملف المرفوع مؤقتاً على النظام
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
+        tmp.write(uploaded_file.getvalue())
+        tmp_path = tmp.name
+
+    # رفع الملف للذكاء الاصطناعي باستخدام المسار المؤقت
+    sample_file = client.files.upload(file=tmp_path)
